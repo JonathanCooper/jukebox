@@ -13,6 +13,7 @@ def walk(path):
 def to_utf(ascii_thing):
   return mdb.escape_string(unicode(ascii_thing).encode('utf8'))
 
+# adjust database credentials as necessary
 con = mdb.connect('localhost', '', '', '')
 
 with exiftool.ExifTool() as et:
