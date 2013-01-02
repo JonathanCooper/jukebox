@@ -17,10 +17,12 @@ def to_utf(ascii_thing):
 con = mdb.connect('localhost', '', '', '')
 
 with exiftool.ExifTool() as et:
+  # adjust this to walk() a directory that contains mp3 files
   for file in walk('/data'):
     result = et.get_metadata(file)
     if not con:
-      con = mdb.connect('localhost', 'music', 'naed3eichauQu1', 'music')
+      # db credentials here
+      con = mdb.connect('localhost', '', '', '')
     cur = con.cursor()
     
     try:
