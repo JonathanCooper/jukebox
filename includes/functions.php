@@ -22,20 +22,8 @@ function bootstrap($search = false, $page_start=0, $list_start=false) {
 	$result = use_db($all_query);
 	$unsorted = $result;
 	if ($list_start) {
-		//print $result[0]["id"];	
 		$i=0;
-		/*var_dump(($result[$i]["id"] != $list_start));
-		var_dump($result[$i]["id"]);
-		var_dump($list_start); */
 		$result=array_values($result);
-		/*foreach ($result as $test) {
-			echo $test["id"]."<br>";
-		}
-		echo "<br>"; */
-		//while ($result[$i]["id"] != $list_start) {
-//		while ($i < count($result[0])) {
-		//$unsorted = $result;
-		//while ($i < 11) {
 		foreach ($result as $test) {
 			if ($test["id"] != $list_start) {
 				array_push($result, $test);
@@ -45,15 +33,7 @@ function bootstrap($search = false, $page_start=0, $list_start=false) {
 			}
 			$i+=1;
 		}
-		/* foreach ($result as $test) {
-			echo $test["id"]."<br>";
-		}
-		echo "<br><br>"; 
-		foreach ($sorted as $test) {
-                        echo $test["id"]."<br>";
-                }*/
-		$fh = fopen("/tmp/mplayerplaylist", "w");
-		//$result=array_values($result);
+                $fh = fopen("/tmp/mplayerplaylist", "w");
 		foreach ($result as $to_write) {
 			fwrite($fh, $to_write['fullpath']."\n");
 		}
@@ -84,7 +64,6 @@ function bootstrap($search = false, $page_start=0, $list_start=false) {
 }
 
 function mysql_query_jcache($sql, $expire=3600, $key=false, $instance=11211) {
-//	global $memcache;
 	$memcache = new Memcache;
 	$memcache->connect('localhost', $instance);
 	if ($key===false) {
