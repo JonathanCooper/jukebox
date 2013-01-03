@@ -6,4 +6,6 @@ $db_user = '';
 $db_pass = '';
 $db_host = '';
 
+$sound_card=''; // this will be sent to mplayer after -ao; expected format like alsa:device=hw=1.9
+
 ?>
