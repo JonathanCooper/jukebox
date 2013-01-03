@@ -83,3 +83,13 @@ function mysql_query_jcache($sql, $expire=3600, $key=false, $instance=11211) {
 	} 
 }
 
+function startup() {
+	if (!file_exists($fifo_path)) {
+       		posix_mkfifo($fifo_path,  0664);
+	}
+	if (!exec("ps auwwx | grep 'mplayer -ao " . $sound_card . " -slave -idle -input file=".$fifo_path."' | grep -v grep", $out, $ret)) {
+       		exec("mplayer -ao alsa:device=hw=1.9 -slave -idle -input file=".$fifo_path." >/dev/null &");
+	}
+}
+
+?>
