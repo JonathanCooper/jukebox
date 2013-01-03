@@ -21,13 +21,11 @@ include('includes/functions.php');
 <?php
 
 // set up mplayer if it isn't running yet
-
 if (!file_exists("/tmp/mplayercontrol")) {
 	posix_mkfifo("/tmp/mplayercontrol",  0664);
-	chgrp("/tmp/mplayercontrol", "jc");
 }
-if (!exec("pgrep -f 'mplayer -ao alsa:device=hw=1.9 -slave -idle -input file=/tmp/mplayercontrol'")) {
-	exec("mplayer -ao alsa:device=hw=1.9 -slave -idle -input file=/tmp/mplayercontrol &");
+if (!exec("ps auwwx | grep 'mplayer -ao alsa:device=hw=1.9 -slave -idle -input file=/tmp/mplayercontrol' | grep -v grep", $out, $ret)) { 
+	exec("mplayer -ao alsa:device=hw=1.9 -slave -idle -input file=/tmp/mplayercontrol >/dev/null &");
 }
 
 if (isset($_GET['skip'])) {
