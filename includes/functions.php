@@ -86,7 +86,7 @@ function startup() {
        		posix_mkfifo($fifo_path,  0664);
 	}
 	if (!exec("ps auwwx | grep 'mplayer -ao " . $sound_card . " -slave -idle -input file=".$fifo_path."' | grep -v grep", $out, $ret)) {
-       		exec("mplayer -ao alsa:device=hw=1.9 -slave -idle -input file=".$fifo_path." >/dev/null &");
+       		exec("mplayer -ao " . $sound_card . " -slave -idle -input file=".$fifo_path." >/dev/null &");
 	}
 }
 
