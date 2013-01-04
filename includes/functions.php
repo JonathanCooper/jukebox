@@ -1,7 +1,5 @@
 <?php
 
-//include('conf.php');
-
 function use_db($this_query) {
 	global $db_name, $db_user, $db_pass, $db_host;
 	mysql_connect($db_host, $db_user, $db_pass);
