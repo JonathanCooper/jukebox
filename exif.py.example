@@ -30,7 +30,6 @@ with exiftool.ExifTool() as et:
     except KeyError: 
       try:
         cur.execute("insert into files (fullpath, title, artist, album) values ('%s','%s','%s','%s')" % (to_utf(result['SourceFile']), to_utf(result['ID3:Title']), to_utf(result['ID3:Artist']), to_utf(result['ID3:Album'])))
-        #print "fullpath: %s\ntitle: %s\nartist: %s\nalbum: %s\n" % (to_utf(result['SourceFile']), to_utf(result['ID3:Title']), to_utf(result['ID3:Artist']), to_utf(result['ID3:Album']))
       except KeyError:
         try:
           cur.execute("insert into files (fullpath, artist, album) values ('%s','%s','%s')" % (to_utf(result['SourceFile']), to_utf(result['ID3:Artist']), to_utf(result['ID3:Album'])))
