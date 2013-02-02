@@ -21,7 +21,7 @@ include('includes/functions.php');
 <?php
 
 // set up mplayer if it isn't running yet
-startup();
+startup($sound_card, $fifo_path);
 
 if (isset($_GET['skip'])) {
 	if ($_GET['skip']) {
