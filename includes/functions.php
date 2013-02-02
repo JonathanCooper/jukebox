@@ -81,7 +81,7 @@ function mysql_query_jcache($sql, $expire=3600, $key=false, $instance=11211) {
 	} 
 }
 
-function startup() {
+function startup($sound_card, $fifo_path) {
 	if (!file_exists($fifo_path)) {
        		posix_mkfifo($fifo_path,  0664);
 	}
