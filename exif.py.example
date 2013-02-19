@@ -37,3 +37,7 @@ with exiftool.ExifTool() as et:
       except KeyError:
         pass
  
+if not con:
+  con = mdb.connect('localhost', '', '', '')
+cur = con.cursor()
+cur.execute("delete from files where title='' or artist='')
