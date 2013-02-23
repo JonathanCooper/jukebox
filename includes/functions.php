@@ -11,10 +11,10 @@ function use_db($this_query) {
 
 function bootstrap($search = false, $page_start=0, $list_start=false) {
 	if ($search) {
-		$all_query = "select id,title,artist,album,track,fullpath from files where title like '%".$search."%' or artist like '%".$search."%' or album like '%".$search."%' order by artist,album,cast(track as int);";
+		$all_query = "select id,title,artist,album,track,fullpath from files where title like '%".$search."%' or artist like '%".$search."%' or album like '%".$search."%' order by artist,album,abs(track);";
 	}
 	else {
-		$all_query = "select id,title,artist,album,track,fullpath from files order by artist,album,track;";
+		$all_query = "select id,title,artist,album,track,fullpath from files order by artist,album,abs(track);";
 	}
 
 	$result = use_db($all_query);
