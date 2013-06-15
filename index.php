@@ -3,19 +3,23 @@
 include('includes/conf.php');
 include('includes/functions.php');
 
+if (isset($_GET['search'])) {
+	$search = preg_replace( "/[^a-zA-Z0-9_]/", "", $_GET['search']);
+}
+
 ?>
 <head>
  <link rel=stylesheet href="main.css" type="text/css">
 </head>
 <form name="myform" action="/" method="GET">
-<input type="text" name="search" id="search" size="40" value="<?php if (isset($_GET['search'])) { echo $_GET['search']; }?>">
+<input type="text" name="search" id="search" size="40" value="<?php if (isset($search)) { echo $search; }?>">
 <input type="submit" value="Filter">
 </form>
 
 <br>
-<a href="/index.php?pause=toggle<?php if (isset($_GET['search'])) { echo "&search=".$_GET['search']; }?>">Pause/Unpause</a> || 
-<a href="/index.php?skip=true<?php if (isset($_GET['search'])) { echo "&search=".$_GET['search']; }?>">Next</a> || 
-<a href="/index.php?skip=false<?php if (isset($_GET['search'])) { echo "&search=".$_GET['search']; }?>">Previous</a> ||
+<a href="/index.php?pause=toggle<?php if (isset($_GET['search'])) { echo "&search=".$search; }?>">Pause/Unpause</a> || 
+<a href="/index.php?skip=false<?php if (isset($_GET['search'])) { echo "&search=".$search; }?>">Previous</a> ||
+<a href="/index.php?skip=true<?php if (isset($_GET['search'])) { echo "&search=".$search; }?>">Next</a> || 
 <a href="/index.php">All</a><br><br>
 
 <?php
