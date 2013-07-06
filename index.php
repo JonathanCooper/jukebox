@@ -4,7 +4,7 @@ include('includes/conf.php');
 include('includes/functions.php');
 
 if (isset($_GET['search'])) {
-	$search = preg_replace( "/[^a-zA-Z0-9_]/", "", $_GET['search']);
+	$search = preg_replace( "/[^a-zA-Z0-9_\s]/", "", $_GET['search']);
 }
 
 ?>
