@@ -60,9 +60,4 @@ if ($_POST['action'] == 'play') {
 } //TODO: else {
 	
 
-
-$fh = fopen('out.log', 'a');
-fwrite($fh, sprintf("%s | %s\n", $_POST['action'], $_POST['param']));
-fclose($fh);
-
 ?>
