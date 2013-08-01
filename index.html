@@ -11,7 +11,7 @@
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
 	$('#example').dataTable( {
-		"iDisplayLength": 20,
+		"iDisplayLength": 12,
 		"bSort": false,
 		"bProcessing": true,
 		"bServerSide": true,
@@ -19,19 +19,22 @@ $(document).ready(function() {
 		"aoColumnDefs": [ {
 			"aTargets": [0],
 			"mRender": function ( data, type, val ) {
-				return '<button onClick="post_mpl('+data+');" type="submit" value="' + data + '">➤</button>';
+				return '<button onClick="post_mpl(\'play\', '+data+');" type="submit" value="' + data + '">➤</button>';
 			}
 		}]
 	}); 
-	post_mpl = function (id){
-	    	$.post("mplayer.php", {id: id});
+	post_mpl = function (action, param){
+	    	$.post("mplayer.php", {action: action, param: param});
 	}
 });
 
 </script>
 </head>
 <body>
-
+<button onClick="post_mpl('pause', false);" type="submit" value="" style="height:40px;width:40px"> || </button>
+<button onClick="post_mpl('skip', 'back');" type="submit" value=" "style="height:40px;width:40px">  <= </button>
+<button onClick="post_mpl('skip', 'forward');" type="submit" value="" style="height:40px;width:40px"> => </button>
+<br><br>
 <table id="example" class="display">
 <thead>
 	<tr>
