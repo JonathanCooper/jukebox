@@ -3,6 +3,7 @@
 include('includes/conf.php');
 
 function startup() {
+	global $fifo_path, $sound_card;
 	if (!file_exists($fifo_path)) {
 		posix_mkfifo($fifo_path, 0664);
 	}
