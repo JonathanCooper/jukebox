@@ -40,4 +40,4 @@ with exiftool.ExifTool() as et:
 if not con:
   con = mdb.connect('localhost', '', '', '')
 cur = con.cursor()
-cur.execute("delete from files where title='' or artist='')
+cur.execute("delete from files where title='' or artist=''")
