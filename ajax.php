@@ -22,7 +22,7 @@
 	
 	/* Database connection information */
 	$gaSql['user']       = "music";
-	$gaSql['password']   = "naed3eichauQu1";
+	$gaSql['password']   = "";
 	$gaSql['db']         = "music";
 	$gaSql['server']     = "localhost";
 	
